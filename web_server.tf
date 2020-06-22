@@ -61,7 +61,7 @@ resource "azurerm_network_security_group" "linux-nsg" {
 #Public IP Address
 
 resource "azurerm_public_ip" "publicip" {
-    name                         = "${var.\vm-name}-public-ip"
+    name                         = "${var.vm-name}-public-ip"
     location                     = azurerm_resource_group.network-rg.location
     resource_group_name          = azurerm_resource_group.network-rg.name
     allocation_method = "Static"
