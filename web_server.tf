@@ -42,7 +42,7 @@ resource "azurerm_network_security_group" "linux-nsg" {
     security_rule {
     name                       = "allow-https"
     description                = "allow-https"
-    priority                   = 110
+    priority                   = 120
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
