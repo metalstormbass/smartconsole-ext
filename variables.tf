@@ -26,7 +26,7 @@ variable "network-subnet-cidr" {
 # SC_EXT private ip
 variable "internal-private-ip" {
   type        = string
-  description = "Subnet"
+  description = "Interface private IP"
 }
 
 # Allowed IP Addres
