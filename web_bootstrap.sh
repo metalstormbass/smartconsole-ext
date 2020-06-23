@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo $git_addr >> /home/mike/e.txt
 # Update and download Nginx
 until sudo apt-get update && sudo apt-get -y install nginx;do
     sleep 1
