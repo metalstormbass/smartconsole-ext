@@ -1,4 +1,8 @@
 #!/bin/bash
+
+echo $name >> /home/mike/test.txt
+echo $git_addr >> /home/mike/test2.txt
+
 # Update and download Nginx
 until sudo apt-get update && sudo apt-get -y install nginx;do
     sleep 1
@@ -10,7 +14,7 @@ until sudo apt-get update && sudo apt-get -y install git;do
 done
 
 #Install Git
-until sudo git clone $git_addr  /home/$name/smart-console-extensions;do
+until sudo git clone $git_addr /home/$name/smart-console-extensions;do
     sleep 1
 done
 
@@ -28,7 +32,8 @@ sudo cp -r /home/$name/smart-console-extensions/examples/ /var/www/html/
 sudo mkdir /etc/nginx/ssl
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt -subj "/C=CA/ST=AB/L=Calgary/O=Dis/CN=www.example.com"
 
-
+#Build Config File
+sudo touch /etc/nginx/sites-enabled/default
 sudo cat <<EOT >> /etc/nginx/sites-enabled/default
 server {
        
