@@ -33,6 +33,20 @@ github-address
 allowed-IP
 ```
 
+Run the following commands in Terraform:
+
+```hcl
+terraform init
+```
+
+then:
+
+```hcl
+terraform apply
+```
+
+Finally, wait until Terraform has completed. Then wait an addtional 5-10 mins for the VM to complete bootstrapping.
+
 Finally, in order to connect the Smart Console extention: 
     1. Go to Manage & Settings within Smart Console
     2. Select Preferences and scroll down to Smart Console Extensions
@@ -53,3 +67,13 @@ or
 ```hcl
 https://x.x.x.x/smart-console-extensions/examples/show-gateways-interfaces/extension.json
 ```
+
+To destroy, you need to run:
+
+```hcl
+terraform destroy
+```
+
+## Issues:
+
+At this point, sometimes you need to run the destroy  command several (~3) times for the environment to be completely removed. This appears to be a bug in the dependency handling within Terraform.
