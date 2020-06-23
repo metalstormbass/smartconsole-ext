@@ -22,7 +22,7 @@ ip_address=$(dig +short myip.opendns.com @resolver1.opendns.com)
 # Modify Nginx
 sudo rm  /etc/nginx/sites-enabled/default
 sudo rm /var/www/html/index.html
-sudo cp -r /home/$name/smart-console-extensions/examples/ /var/www/html/
+sudo cp -r /home/$name/smart-console-extensions/ /var/www/html/
 
 
 #Generate Cert
