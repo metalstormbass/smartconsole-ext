@@ -14,7 +14,7 @@ Azure CLI (If running Terraform on premise)
 Clone the repository
 
 ```hcl
-git clone https://github.com/metalstormbass/WAAP-TF.git
+git clone https://github.com/metalstormbass/smartconsole-ext.git
 ```
 
 Ensure that you have Azure CLI installed. Once installed run the following command in Powershell.
