@@ -10,7 +10,7 @@ until sudo apt-get update && sudo apt-get -y install git;do
 done
 
 #Install Git
-until sudo git clone https://github.com/CheckPointSW/smart-console-extensions.git /home/$name/smart-console-extensions;do
+until sudo git clone $git_addr  /home/$name/smart-console-extensions;do
     sleep 1
 done
 
@@ -21,17 +21,15 @@ ip_address=$(dig +short myip.opendns.com @resolver1.opendns.com)
 # Modify Nginx
 sudo rm  /etc/nginx/sites-enabled/default
 sudo rm /var/www/html/index.html
-sudo cp -r /home/$name/smart-console-extensions/examples/hello-world/css /var/www/html/
-sudo cp -r /home/$name/smart-console-extensions/examples/hello-world/js /var/www/html/
-sudo cp /home/$name/smart-console-extensions/examples/hello-world/extension.json /var/www/html/extension.json
-sudo cp /home/$name/smart-console-extensions/examples/hello-world/index.html /var/www/html/index.html
+sudo cp -r /home/$name/smart-console-extensions/examples/ /var/www/html/
+
 
 #Generate Cert
-
+sudo mkdir /etc/nginx/ssl
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt -subj "/C=CA/ST=AB/L=Calgary/O=Dis/CN=www.example.com"
 
 
-sudo cat <<EOT >> /etc/nginx/sites-enabled/smart
+sudo cat <<EOT >> /etc/nginx/sites-enabled/default
 server {
        
         server_name _;
@@ -63,7 +61,6 @@ server {
 
 EOT
 
-
+sudo nginx -s reload
 sudo service nginx restart
 sleep 2
-sudo nginx -s reload

@@ -4,6 +4,7 @@ data "template_file" "userdata_setup" {
   template = "${file("userdata_setup.template")}"
   vars  = {
     name= "${var.username}"
+    git_addr ="{var.github-address}"
     logic = "${file("web_bootstrap.sh")}"
   }
 }
@@ -24,31 +25,20 @@ resource "azurerm_network_security_group" "linux-nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "Internet"
+    source_address_prefix      = var.allowed-IP
     destination_address_prefix = "*"
   }
-  security_rule {
-    name                       = "allow-http"
-    description                = "allow-http"
+  
+    security_rule {
+    name                       = "allow-https"
+    description                = "allow-https"
     priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "80"
-    source_address_prefix      = "Internet"
-    destination_address_prefix = "*"
-  }
-    security_rule {
-    name                       = "allow-https"
-    description                = "allow-https"
-    priority                   = 120
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
     destination_port_range     = "443"
-    source_address_prefix      = "Internet"
+    source_address_prefix      = var.allowed-IP
     destination_address_prefix = "*"
   }
   tags = {

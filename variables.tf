@@ -29,6 +29,18 @@ variable "internal-private-ip" {
   description = "Subnet"
 }
 
+# Allowed IP Addres
+variable "allowed-IP" {
+  type        = string
+  description = "IP address where management station can be accessed"
+}
+
+# Github Address
+variable "github-address" {
+  type        = string
+  description = "Github repo where Smart Console extention is stored."
+}
+
 # environment
 variable "environment" {
   type        = string
