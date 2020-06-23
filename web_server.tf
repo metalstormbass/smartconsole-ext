@@ -4,7 +4,7 @@ data "template_file" "userdata_setup" {
   template = "${file("userdata_setup.template")}"
   vars  = {
     name= "${var.username}"
-    git_addr ="{var.github-address}"
+    git_addr ="${var.github-address}"
     logic = "${file("web_bootstrap.sh")}"
   }
 }
