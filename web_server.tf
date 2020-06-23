@@ -3,7 +3,7 @@
 data "template_file" "userdata_setup" {
   template = "${file("userdata_setup.template")}"
   vars  = {
-    name       = "${var.username}"
+    name= "${var.username}"
     logic = "${file("web_bootstrap.sh")}"
   }
 }

@@ -10,7 +10,7 @@ until sudo apt-get update && sudo apt-get -y install git;do
 done
 
 #Install Git
-until sudo git clone https://github.com/CheckPointSW/smart-console-extensions.git;do
+until sudo git clone https://github.com/CheckPointSW/smart-console-extensions.git /home/$name/smart-console-extensions;do
     sleep 1
 done
 
