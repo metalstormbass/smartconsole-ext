@@ -1,7 +1,11 @@
 # smartconsole-ext
 Framework for hosting Smart Console Extensions
 
-This playbook will install Nginx aand configure basic SSL. This downloads a repository from Github and hosts the Smart Console Extensions. This example uses the example Smart Console Extensions. NSGs are created that only allow access to the host on port 443 and port 22. Also, it is defined to allow only one IP address to connect.
+This playbook will install Nginx aand configure basic SSL. This downloads a repository from Github and hosts the Smart Console Extensions.
+
+This example was tested using  the example [Smart Console Extensions](https://github.com/CheckPointSW/smart-console-extensions) 
+
+NSGs are created that only allow access to the host on port 443 and port 22. Also, it is defined to allow only one IP address to connect.
 
 ## Prerequisites
 
@@ -26,8 +30,8 @@ az login
 Configure the variables. The majority of the variables are for Azure settings (VNETs, subnets, names, etc). Two important variables to consider are:
 
 ```hcl
-#This variable is the repository that will be cloned and hosted on the webserver
-github-address
+#This variable is the repository that will be cloned and hosted on the webserver. Tested using the Check Point provided examples.
+github-address = https://github.com/CheckPointSW/smart-console-extensions.git
 
 #This IP is the only IP address that you will be able to access the new VM from. This would typically be a WAN IP Address
 allowed-IP
