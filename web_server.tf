@@ -92,6 +92,11 @@ resource "azurerm_virtual_machine" "main" {
   resource_group_name   = azurerm_resource_group.network-rg.name
   network_interface_ids = [azurerm_network_interface.ubuntu.id]
   vm_size               = "Standard_DS1_v2"
+  
+   depends_on = [
+    azurerm_network_interface_security_group_association.linux-nsg-int
+    
+   ]
 
   delete_os_disk_on_termination = true
   delete_data_disks_on_termination = true
